@@ -1,5 +1,4 @@
-const writeToFile = require('../index');
-const index = require('../index')
+
 
 
 const licenseBadges = {
@@ -65,31 +64,30 @@ function renderLicenseLink(license) {
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
   const licenselink = renderLicenseLink(license);
-  if (licenselink.length != 0) {
-    return `This application is covered by [${license[2]}](${license[1]})`
+  if (licenselink && licenselink.length != 0) {
+    return `This application is covered by [${licenselink[2]}](${licenselink[1]})`
   } else {
     return ''
   }
-
-
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   // returnBadge(data.license)
+  console.log(data[0])
 
-  return `# ${data.title}
+  return `# ${data[0].title}
 
 ## Description
 
--${data.dsMotiviation}
--${data.dsWhy}
--${data.dsProblem}
--${data.dsLearn}
+-${data[1].dsMotiviation}
+-${data[2].dsWhy}
+-${data[3].dsProblem}
+-${data[4].dsLearn}
 
-${renderLicenseBadge(data.license)}
+${renderLicenseBadge(data[8].license)}
 
-## Table of Contents (Optional)
+## Table of Contents 
 
 If your README is long, add a table of contents to make it easy for users to find what they need.
 
@@ -100,19 +98,27 @@ If your README is long, add a table of contents to make it easy for users to fin
 
 ## Installation
 
-${data.installation}
+${data[5].installation}
 
 ## Usage
 
-${data.usage}
+${data[6].usage}
 
 ## Credits
 
-${data.credits}
+${data[7].credits}
 
 ## License
 
-${renderLicenseSection(data.license)}
+${renderLicenseSection(data[8].license)}
+
+## Contribution Guidelines
+
+${data[9].contribute}
+
+## Tests
+
+${data[10].tests}
 
 
 `;

@@ -1,6 +1,6 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-const markDown = require('./utils/generateMarkdown')
+const generateMarkdown = require('./utils/generateMarkdown.js')
 const fs = require('fs');
 
 // TODO: Create an array of questions for user input
@@ -29,7 +29,13 @@ const questions = [
 
     // License
 
-    ['What license did you use?', 'license', ['MIT', 'Apache license 2.0', 'GPLv2', 'GPLv3', 'BSD 3-Clause License', 'None']]
+    ['What license did you use?', 'license', ['MIT', 'Apache license 2.0', 'GPLv2', 'GPLv3', 'BSD 3-Clause License', 'None']],
+
+    // Contribute
+    ['If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so.', 'contribute'],
+
+    // tests
+    ['Go the extra mile and write tests for your application. Then provide examples on how to run them here.', 'tests']
 ];
 
 // TODO: Create a function to write README file
@@ -98,7 +104,6 @@ function init(index, answersObj) {
 // Function call to initialize app
 init(0, []);
 
-module.exports = writeToFile;
 
 // function init() {
 //     inquirer
