@@ -23,18 +23,23 @@ const questions = [
     // Credits
     [`List your collaborators, if any, with links to their GitHub profiles.
 
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
+    If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
 
-If you followed tutorials, include links to those here as well.`, 'credits'],
+    If you followed tutorials, include links to those here as well.`, 'credits'],
 
     // License
 
-    ['What license did you use?', 'license', ['MIT', 'Apache license 2.0', 'Open Software License 3.0']]
+    ['What license did you use?', 'license', ['MIT', 'Apache license 2.0', 'GPLv2', 'GPLv3', 'BSD 3-Clause License', 'None']]
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
 
+    const mdFile = generateMarkdown(data)
+
+    fs.writeFile(fileName, mdFile, (err) =>
+    err ? console.error(err) : console.log('Success!')
+);
 }
 
 // TODO: Create a function to initialize app
@@ -60,8 +65,8 @@ function init(index, answersObj) {
             if (index < questions.length - 1) {
             init(index + 1, answersObj);
             } else {
-            // Otherwise, all questions have been answered, so log the answersObj array
-            console.log(answersObj);
+            // Otherwise, all questions have been answered, so send data to be written
+            writeToFile('README.md', answersObj);
             }
         });
     } else {
@@ -83,15 +88,17 @@ function init(index, answersObj) {
             if (index < questions.length - 1) {
             init(index + 1, answersObj);
             } else {
-            // Otherwise, all questions have been answered, so log the answersObj array
-            console.log(answersObj);
+            // Otherwise, all questions have been answered, so send data to be written
+            writeToFile('README.md', answersObj);
             }
         });
     }
 }
 
 // Function call to initialize app
-init();
+init(0, []);
+
+module.exports = writeToFile;
 
 // function init() {
 //     inquirer
