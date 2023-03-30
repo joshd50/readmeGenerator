@@ -38,41 +38,57 @@ function writeToFile(fileName, data) {
 }
 
 // TODO: Create a function to initialize app
+function init(index, answersObj) {
+    const question = questions[index];
 
-function init() {
-    console.log(questions[8].length)
-    let answersObj = [];
-    let promises = [];
-    for (const question of questions){
-    
-        if (question.length === 3){
-            
-            inquirer
-            .prompt([
-                {
-                type: 'list',
-                message: question[0],
-                name: question[1],
-                choices: question[2]
-                },
-            ])
-            .then((response) =>
-                answersObj.push(response))
-        } else {
-            inquirer
-            .prompt([
-                {
-                type: 'input',
-                message: question[0],
-                name: question[1]
-                },
-            ])
-            .then((response) =>
-                answersObj.push(response))
-        };
-    }; 
-    console.log(answersObj)      
-};
+    // need to make loop instead of for of. does not wait for answer
+    // If the question has a third element, use the input prompt type
+    if (question.length < 3) {
+        inquirer
+        .prompt([
+            {
+            type: 'input',
+            message: question[0],
+            name: question[1],
+            },
+        ])
+        .then((response) => {
+            // Add the user's answer to the answersObj array
+            answersObj.push(response);
+
+            // If there are more questions, prompt the user for the next question
+            if (index < questions.length - 1) {
+            init(index + 1, answersObj);
+            } else {
+            // Otherwise, all questions have been answered, so log the answersObj array
+            console.log(answersObj);
+            }
+        });
+    } else {
+        // Otherwise, use the input prompt type
+        inquirer
+        .prompt([
+            {
+            type: 'list',
+            message: question[0],
+            name: question[1],
+            choices: question[2],
+            },
+        ])
+        .then((response) => {
+            // Add the user's answer to the answersObj array
+            answersObj.push(response);
+
+            // If there are more questions, prompt the user for the next question
+            if (index < questions.length - 1) {
+            init(index + 1, answersObj);
+            } else {
+            // Otherwise, all questions have been answered, so log the answersObj array
+            console.log(answersObj);
+            }
+        });
+    }
+}
 
 // Function call to initialize app
 init();
