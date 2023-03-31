@@ -47,11 +47,11 @@ function writeToFile(fileName, data) {
     err ? console.error(err) : console.log('Success!')
 );
 }
-
+const answersObj = {test:'test'}
 // TODO: Create a function to initialize app
 function init(index, answersObj) {
     const question = questions[index];
-
+    
     // need to make loop instead of for of. does not wait for answer
     // If the question has a third element, use the input prompt type
     if (question.length < 3) {
@@ -65,7 +65,7 @@ function init(index, answersObj) {
         ])
         .then((response) => {
             // Add the user's answer to the answersObj array
-            answersObj.push(response);
+            answersObj = {...answersObj,...response};
 
             // If there are more questions, prompt the user for the next question
             if (index < questions.length - 1) {
@@ -88,7 +88,7 @@ function init(index, answersObj) {
         ])
         .then((response) => {
             // Add the user's answer to the answersObj array
-            answersObj.push(response);
+            answersObj = {...answersObj,...response};
 
             // If there are more questions, prompt the user for the next question
             if (index < questions.length - 1) {
@@ -102,7 +102,7 @@ function init(index, answersObj) {
 }
 
 // Function call to initialize app
-init(0, []);
+init(0, answersObj);
 
 
 // function init() {
