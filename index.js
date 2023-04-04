@@ -72,7 +72,8 @@ function init(index, answersObj) {
             init(index + 1, answersObj);
             } else {
             // Otherwise, all questions have been answered, so send data to be written
-            writeToFile('README.md', answersObj);
+            console.log(answersObj.title)
+            writeToFile(`./generatedReadmes/${answersObj.title}README.md`, answersObj);
             }
         });
     } else {
@@ -95,7 +96,8 @@ function init(index, answersObj) {
             init(index + 1, answersObj);
             } else {
             // Otherwise, all questions have been answered, so send data to be written
-            writeToFile('README.md', answersObj);
+            console.log(answersObj.title)
+            writeToFile(`./generatedReadmes/${answersObj.title}README.md`, answersObj);
             }
         });
     }

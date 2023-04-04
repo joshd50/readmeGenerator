@@ -73,23 +73,23 @@ function renderLicenseSection(license) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  // returnBadge(data.license)
-  console.log(data)
+
 
   return `# ${data.title}
 
 ## Description
 
--${data.dsMotivation}
--${data.dsWhy}
--${data.dsProblem}
--${data.dsLearn}
+- ${data.dsMotivation}
+
+- ${data.dsWhy}
+
+- ${data.dsProblem}
+
+- ${data.dsLearn}
 
 ${renderLicenseBadge(data.license)}
 
 ## Table of Contents 
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
 
 - [Installation](#installation)
 - [Usage](#usage)
