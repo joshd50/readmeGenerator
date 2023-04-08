@@ -27,6 +27,8 @@ In order to install this project, please install npm. Once installed, please ope
 
 A series of questions will be prompted. Please answer each question. Once all questions have been answered, a Readme.md will be created in the generatedREADMES folder.
 
+[Walkthrough Video](https://drive.google.com/file/d/1Tz-M-4P1B_l9n3qmkYy3aha482ofEFN0/view?usp=share_link)
+
 ![Screenshot of CLI](./images/Screenshot%202023-04-03%20at%208.47.14%20PM.png)
 
 ## Credits

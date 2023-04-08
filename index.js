@@ -35,7 +35,11 @@ const questions = [
     ['If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so.', 'contribute'],
 
     // tests
-    ['Go the extra mile and write tests for your application. Then provide examples on how to run them here.', 'tests']
+    ['Go the extra mile and write tests for your application. Then provide examples on how to run them here.', 'tests'],
+
+    ['What is your GitHub username?', 'username'],
+
+    ['What is your e-mail address?', 'email']
 ];
 
 // TODO: Create a function to write README file

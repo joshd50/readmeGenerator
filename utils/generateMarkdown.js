@@ -120,6 +120,12 @@ ${data.contribute}
 
 ${data.tests}
 
+## Questions
+
+[Link to my GitHub Profile](https://github.com/${data.username})
+
+Please submit your questions to ${data.email}
+
 
 `;
 }
